@@ -1,0 +1,29 @@
+<button                   
+    class="btn btn-primary"
+    routerLink="/students/create" 
+    routerLinkActive="activebutton"
+    ariaCurrentWhenActive="page" routerLink="/">Home
+</button>
+<div class="container">
+    <h1>Ajouter un nouvel éléve</h1>
+   
+    <a href="#" routerLink="/rooms-list" class="btn btn-primary">Back</a>
+         
+    <form [formGroup]= "form" (ngSubmit)="submit()">
+   
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input
+                title="name"
+                formControlName="name"
+                id="name"
+                type="text"
+                class="form-control">
+            <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
+                <div *ngIf="f['name'].errors && f['name'].errors['required']">Title is required.</div>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit"  [disabled]="!form.valid">Submit</button>
+    </form>
+</div>

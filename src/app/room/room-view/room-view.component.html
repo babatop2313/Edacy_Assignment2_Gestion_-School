@@ -1,0 +1,69 @@
+
+
+ <button                   
+    class="btn btn-primary"
+    routerLink="/students/create" 
+    routerLinkActive="activebutton"
+    ariaCurrentWhenActive="page" routerLink="/">Home
+</button>
+<div class="container">
+ 
+   
+    <a href="#" routerLink="/rooms-list" class="btn btn-primary">Back</a>
+    
+    <div>
+        <strong>ID: {{ room.id }}</strong>
+        
+    </div>
+    
+    <div>
+        <strong>Name:  {{ room.name }}</strong>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">identifiant</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Date de naissance</th>
+                <th scope="col">adresse</th>
+             
+                <th scope="col">
+                <button                   
+                    class="btn btn-primary"
+                    routerLink="/students/create" 
+               routerLinkActive="activebutton"
+               ariaCurrentWhenActive="page" routerLink="/students/create/">Ajouter un éléve
+                </button>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let stu of students; let i = index">
+                <td>{{stu.id}} </td>
+                <td>{{stu.Fname}} </td>
+                <td>{{stu.Lname}}</td>
+                <td>{{stu.birthday}}</td>
+                <td>{{stu.address}} </td>
+            
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                        <a routerLink="/students-list" 
+                            routerLinkActive="activebutton"
+                            ariaCurrentWhenActive="page" >
+                           <button type="button" class="btn btn-danger" routerLink="/reload" (click)="deleteStudent(i,stu.id)"   >Supprimer</button>  
+                        </a>
+                         <button routerLink="/students/edit/{{stu.id}}" 
+                         routerLinkActive="activebutton"
+                         ariaCurrentWhenActive="page" class="btn delete_btn" [routerLink]="['/students/', stu.id, 'edit']">Modifier</button>
+                   </div>
+         
+                </td>
+            </tr>
+           
+        </tbody>
+  
+    </table>
+ 
+    
+</div>

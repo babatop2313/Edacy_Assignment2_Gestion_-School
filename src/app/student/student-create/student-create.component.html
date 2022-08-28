@@ -1,0 +1,83 @@
+<button                   
+    class="btn btn-primary"
+    routerLink="/students/create" 
+    routerLinkActive="activebutton"
+    ariaCurrentWhenActive="page" routerLink="/">Home
+</button>
+<div class="container">
+    <h1>Ajouter un nouvel éléve</h1>
+   
+    <a href="#" routerLink="/students-list" class="btn btn-primary">Back</a>
+         
+    <form [formGroup]= "form" (ngSubmit)="submit()">
+   
+        <div class="form-group">
+            <label for="Fname">Prénom:</label>
+            <input
+                title="Fname"
+                formControlName="Fname"
+                id="Fname"
+                type="text"
+                class="form-control">
+            <div *ngIf="f['Fname'].touched && f['Fname'].invalid" class="alert alert-danger">
+                <div *ngIf="f['Fname'].errors && f['Fname'].errors['required']">First name is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Lname">Nom:</label>
+            <input
+                title="Lname"
+                formControlName="Lname"
+                id="Lname"
+                type="text"
+                class="form-control">
+            <div *ngIf="f['Lname'].touched && f['Lname'].invalid" class="alert alert-danger">
+                <div *ngIf="f['Lname'].errors && f['Lname'].errors['required']">Last name is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="birthday">Date de naissance</label>
+            <input
+                title="birthday"
+                formControlName="birthday"
+                id="birthday"
+                type="date"
+                class="form-control">
+            <div *ngIf="f['birthday'].touched && f['birthday'].invalid" class="alert alert-danger">
+                <div *ngIf="f['birthday'].errors && f['birthday'].errors['required']">date de naissan is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="address">Adresse:</label>
+            <input
+                title="address"
+                formControlName="address"
+                id="address"
+                type="text"
+                class="form-control">
+            <div *ngIf="f['address'].touched && f['address'].invalid" class="alert alert-danger">
+                <div *ngIf="f['address'].errors && f['address'].errors['required']">adresse is required.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="idRoom">Classe</label>
+            <select formControlName="idRoom" id="idRoom">
+              <option *ngFor="let room of rooms;" [value]="room.id">
+                {{room.name}}
+              </option>
+            </select>
+            <div *ngIf="f['idRoom'].touched && f['idRoom'].invalid" class="alert alert-danger">
+                <div *ngIf="f['idRoom'].errors && f['idRoom'].errors['required']">classe is required.</div>
+            </div>
+        </div>
+
+
+        
+   
+   
+        <button class="btn btn-primary" type="submit"  [disabled]="!form.valid">Submit</button>
+    </form>
+</div>

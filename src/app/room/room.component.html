@@ -1,0 +1,56 @@
+<button                   
+    class="btn btn-primary"
+    routerLink="/students/create" 
+    routerLinkActive="activebutton"
+    ariaCurrentWhenActive="page" routerLink="/">Home
+</button>
+<div class="container container_liste ">
+    <h2 id="title">Les classes du lycee d'axcellence de Dakar</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th></th>
+                    <th scope="col">name</th>
+                    <th scope="col">Nommbre d'éléves</th>
+                    <th>voir plus</th>
+                    <th scope="col">    
+                        <button class="btn btn-primary"
+                            routerLinkActive="activebutton"
+                            ariaCurrentWhenActive="page" routerLink="/rooms/create/">Ajoutez une classe
+                         </button></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let classe of rooms; let i = index">
+             
+                    <td>{{classe.id}} </td>
+                    <td></td>
+                    <td>{{classe.name}}</td>
+                    <td>{{classe.nbStudent}}</td>
+                    <td><svg class="btn btn-primary"
+                        routerLinkActive="activebutton"
+                        ariaCurrentWhenActive="page" [routerLink]="['/rooms/', classe.id]" 
+                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                      </svg></td>
+                    <td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                            <a routerLink="/rooms-list" 
+                                routerLinkActive="activebutton"
+                                ariaCurrentWhenActive="page" >
+                               <button type="button" class="btn btn-danger" routerLink="/reload" (click)="deleteRoom(i,classe.id)"   >Supprimer</button>  
+                            </a>
+                             <button
+                             routerLinkActive="activebutton"
+                             ariaCurrentWhenActive="page" class="btn delete_btn" [routerLink]="['/rooms/', classe.id, 'edit']">Modifier</button>
+                                   
+                            
+                            </div>
+                    </td>
+                </tr>
+               
+            </tbody>
+        </table>
